@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيدلية سمر الباز | Samar Elbaz Pharmacy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #fb010a;
+            --secondary-color: #07f876;
+            --whatsapp-color: #25D366;
+            --dark-bg: #1c1b17;
+            --secondary-bg: #252422;
+            --text-light: #ffffff;
+            --text-gray: #adb5bd;
+            --section-padding: 100px 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        body.en {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+        }
+        
+        /* Progress Bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #ff6b6b);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(28, 27, 23, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color) !important;
+            text-decoration: none;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        body.en .navbar-nav .nav-link::after {
+            left: 0;
+            right: auto;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 5px;
+        }
+        
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .lang-switcher button.active {
+            background: var(--primary-color);
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            text-decoration: none;
+            animation: whatsapp-pulse 2s infinite;
+        }
+        
+        body.en .whatsapp-float {
+            right: auto;
+            left: 30px;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes whatsapp-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        body.en .whatsapp-tooltip {
+            right: auto;
+            left: 70px;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://scontent.fcai19-12.fna.fbcdn.net/v/t39.30808-6/481350947_1085166570295492_4558619959954262623_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=BU1Z3qejv4YQ7kNvwFBONdd&_nc_oc=AdlDRV1jCE3iDdzSEYjkfF4PH6jg8ghchXfwPBxL5ZYNegbx1oniO6sGY7ueE7UFlFc&_nc_zt=23&_nc_ht=scontent.fcai19-12.fna&_nc_gid=omMHbvGUMEPnboI-8AjP0A&oh=00_AfYfJ61W2tNii5yT9AtAWWl3HXoe7eB94J7Fg-KSPeVLaw&oe=68D4FC28');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 100px 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--primary-color), #ff4757);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(251, 1, 10, 0.3);
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(251, 1, 10, 0.4);
+            color: white;
+        }
+        
+        /* Section Styles */
+        .section-padding {
+            padding: var(--section-padding);
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-light);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+        }
+        
+        body.en .section-title::after {
+            left: 0;
+            right: auto;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Service Cards */
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(251, 1, 10, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-color);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        /* Team Slider */
+        .team-slider .swiper-slide {
+            text-align: center;
+        }
+        
+        .team-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .team-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(251, 1, 10, 0.3);
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .team-card:hover .team-img img {
+            transform: scale(1.1);
+        }
+        
+        /* Location Cards */
+        .location-card {
+            background: linear-gradient(135deg, rgba(251, 1, 10, 0.1), rgba(251, 1, 10, 0.05));
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(251, 1, 10, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .location-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 1, 10, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .location-card:hover::after {
+            opacity: 1;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(251, 1, 10, 0.3);
+        }
+        
+        /* Payment Cards */
+        .payment-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-card:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .payment-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover .payment-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-left: 25px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(251, 1, 10, 0.3);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            right: 0;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+        
+        body.en .testimonial-text::before {
+            left: 0;
+            right: auto;
+        }
+        
+        /* FAQ */
+        .accordion-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .accordion-button {
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 25px;
+            border: none;
+            font-size: 1.1rem;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: rgba(251, 1, 10, 0.1);
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+        
+        .accordion-body {
+            color: var(--text-gray);
+            padding: 0 25px 25px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--dark-bg));
+            padding: 80px 0 30px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-widget h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        body.en .footer-links a:hover {
+            transform: translateX(-5px);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-left: 20px;
+            min-width: 30px;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border-radius: 50%;
+            margin: 0 10px 10px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        /* Prescription Section */
+        .prescription-content {
+            background: linear-gradient(135deg, rgba(251, 1, 10, 0.05), rgba(251, 1, 10, 0.02));
+            border-radius: 25px;
+            padding: 50px;
+            border: 2px solid rgba(251, 1, 10, 0.2);
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .prescription-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 1, 10, 0.05) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .prescription-tips {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        body.en .prescription-tips {
+            border-right: none;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .prescription-tips h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .prescription-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .prescription-tips li {
+            margin-bottom: 10px;
+            padding-right: 25px;
+            position: relative;
+        }
+        
+        body.en .prescription-tips li {
+            padding-right: 0;
+            padding-left: 25px;
+        }
+        
+        .prescription-tips li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        body.en .prescription-tips li::before {
+            right: auto;
+            left: 0;
+        }
+        
+        /* Map Section */
+        .map-container {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            height: 400px;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            padding: 40px;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(251, 1, 10, 0.05);
+            transform: translateX(10px);
+        }
+        
+        body.en .contact-item:hover {
+            transform: translateX(-10px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-left: 25px;
+            min-width: 40px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .navbar-nav .nav-link {
+                margin: 10px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .prescription-content {
+                padding: 30px;
+            }
+            
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            body.en .whatsapp-float {
+                right: auto;
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-primary-custom {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+            
+            .testimonial-card {
+                padding: 25px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin: 0 0 15px 0;
+            }
+            
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            body.en .whatsapp-float {
+                right: auto;
+                left: 15px;
+            }
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+        
+        .custom-toast {
+            background: linear-gradient(45deg, var(--primary-color), #ff4757);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(251, 1, 10, 0.4);
+            font-weight: 500;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div id="progressBar"></div>
+    
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="active" onclick="switchLanguage('ar')">العربية</button>
+        <button onclick="switchLanguage('en')">English</button>
+    </div>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201501021670" target="_blank" class="whatsapp-float" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip" data-ar="تواصل معنا على واتساب" data-en="Contact us on WhatsApp">تواصل معنا على واتساب</span>
+    </a>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" data-ar="صيدلية سمر الباز" data-en="Samar Elbaz Pharmacy">صيدلية سمر الباز</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-ar="من نحن" data-en="About">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 data-ar="صيدلية سمر الباز" data-en="Samar Elbaz Pharmacy">صيدلية سمر الباز</h1>
+            <p data-ar="رعايتكم صحتنا - صيدلية متكاملة تقدم أفضل الخدمات الطبية والاستشارات الدوائية بجودة عالية وأسعار تنافسية" 
+               data-en="Your care is our health - A complete pharmacy offering the best medical services and pharmaceutical consultations with high quality and competitive prices">
+                رعايتكم صحتنا - صيدلية متكاملة تقدم أفضل الخدمات الطبية والاستشارات الدوائية بجودة عالية وأسعار تنافسية
+            </p>
+            <a href="#about" class="btn-primary-custom" data-ar="اكتشف المزيد" data-en="Discover More">اكتشف المزيد</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="من نحن" data-en="About Us">من نحن</h2>
+                <p class="section-description" data-ar="صيدلية سمر الباز هي صيدلية رائدة في تقديم الرعاية الصحية الشاملة بجودة عالية. نحن نلتزم بتقديم أفضل الخدمات لعملائنا الكرام" 
+                   data-en="Samar Elbaz Pharmacy is a leading pharmacy in providing comprehensive healthcare with high quality. We are committed to providing the best services to our valued customers">
+                    صيدلية سمر الباز هي صيدلية رائدة في تقديم الرعاية الصحية الشاملة بجودة عالية. نحن نلتزم بتقديم أفضل الخدمات لعملائنا الكرام
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Store Section -->
+    <section class="section-padding" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12" data-aos="fade-right">
+                    <h2 class="section-title" data-ar="زيارة متجرنا" data-en="Visit Our Store">زيارة متجرنا</h2>
+                    <p class="section-description" data-ar="تصفح مجموعتنا الواسعة من الأدوية والمستلزمات الطبية بجودة مضمونة وأسعار مناسبة. نقدم تشكيلة متنوعة تلبي جميع احتياجاتكم" 
+                       data-en="Browse our wide range of medicines and medical supplies with guaranteed quality and suitable prices. We offer a diverse range that meets all your needs">
+                        تصفح مجموعتنا الواسعة من الأدوية والمستلزمات الطبية بجودة مضمونة وأسعار مناسبة. نقدم تشكيلة متنوعة تلبي جميع احتياجاتكم
+                    </p>
+                    <a href="https://cm9gxy5ov03ui01iqbxnw4grp.wuiltstore.com/ar" target="_blank" class="btn-primary-custom" data-ar="تصفح المنتجات" data-en="Browse Products">
+                        تصفح المنتجات
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prescription Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12" data-aos="fade-up">
+                    <h2 class="section-title" data-ar="خدمة الروشتة" data-en="Prescription Service">خدمة الروشتة</h2>
+                    <p class="section-description" data-ar="ارفع صورة روشتتك وسنقوم بتجهيز طلبك بسرعة ودقة. خدمة آمنة وموثوقة لراحتك" 
+                       data-en="Upload your prescription image and we will prepare your order quickly and accurately. A safe and reliable service for your convenience">
+                        ارفع صورة روشتتك وسنقوم بتجهيز طلبك بسرعة ودقة. خدمة آمنة وموثوقة لراحتك
+                    </p>
+                    <div class="prescription-tips">
+                        <h5 data-ar="نصائح قبل رفع الروشتة:" data-en="Tips before uploading prescription:">نصائح قبل رفع الروشتة:</h5>
+                        <ul>
+                            <li data-ar="تأكد من وضوح الصورة" data-en="Make sure the image is clear">تأكد من وضوح الصورة</li>
+                            <li data-ar="تأكد من وجود اسم الطبيب وتاريخه" data-en="Make sure the doctor's name and date are present">تأكد من وجود اسم الطبيب وتاريخه</li>
+                            <li data-ar="تأكد من وضوح الأدوية المكتوبة" data-en="Make sure the written medicines are clear">تأكد من وضوح الأدوية المكتوبة</li>
+                            <li data-ar="تأكد من أن الروشتة سارية المفعول" data-en="Make sure the prescription is valid">تأكد من أن الروشتة سارية المفعول</li>
+                            <li data-ar="تأكد من وجود ختم الطبيب" data-en="Make sure the doctor's stamp is present">تأكد من وجود ختم الطبيب</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <a href="https://forms.gle/fmjSdE9eaR8QaVnt9" target="_blank" class="btn-primary-custom" data-ar="رفع الروشتة" data-en="Upload Prescription">
+                            رفع الروشتة
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="section-padding" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
+                <p class="section-description" data-ar="نقدم مجموعة شاملة من الخدمات الطبية والصيدلانية لتلبية جميع احتياجاتكم بأعلى معايير الجودة" 
+                   data-en="We offer a comprehensive range of medical and pharmaceutical services to meet all your needs with the highest quality standards">
+                    نقدم مجموعة شاملة من الخدمات الطبية والصيدلانية لتلبية جميع احتياجاتكم بأعلى معايير الجودة
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <i class="fas fa-pills service-icon"></i>
+                        <h3 data-ar="صرف الأدوية" data-en="Dispensing Medicines">صرف الأدوية</h3>
+                        <p data-ar="صرف جميع الأدوية بوصفة طبية أو بدون وصفة بجودة مضمونة وأسعار مناسبة" 
+                           data-en="Dispensing all medicines with or without prescription with guaranteed quality and suitable prices">
+                            صرف جميع الأدوية بوصفة طبية أو بدون وصفة بجودة مضمونة وأسعار مناسبة
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="fas fa-heartbeat service-icon"></i>
+                        <h3 data-ar="قياس الضغط والسكر" data-en="Blood Pressure & Sugar Measurement">قياس الضغط والسكر</h3>
+                        <p data-ar="قياس الضغط والسكر مجاناً مع تقديم النصائح اللازمة والمتابعة الصحية" 
+                           data-en="Free blood pressure and sugar measurement with necessary advice and health follow-up">
+                            قياس الضغط والسكر مجاناً مع تقديم النصائح اللازمة والمتابعة الصحية
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <i class="fas fa-truck service-icon"></i>
+                        <h3 data-ar="توصيل للمنزل" data-en="Home Delivery">توصيل للمنزل</h3>
+                        <p data-ar="خدمة التوصيل السريع لجميع المناطق المجاورة في أسرع وقت ممكن" 
+                           data-en="Fast delivery service to all nearby areas in the shortest possible time">
+                            خدمة التوصيل السريع لجميع المناطق المجاورة في أسرع وقت ممكن
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <i class="fas fa-user-md service-icon"></i>
+                        <h3 data-ar="استشارات دوائية" data-en="Pharmaceutical Consultations">استشارات دوائية</h3>
+                        <p data-ar="استشارات دوائية مجانية مع صيادلة متخصصين وذوي خبرة عالية" 
+                           data-en="Free pharmaceutical consultations with specialized and highly experienced pharmacists">
+                            استشارات دوائية مجانية مع صيادلة متخصصين وذوي خبرة عالية
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <i class="fas fa-first-aid service-icon"></i>
+                        <h3 data-ar="مستلزمات طبية" data-en="Medical Supplies">مستلزمات طبية</h3>
+                        <p data-ar="توفير جميع المستلزمات الطبية والأدوات بجودة عالية وأسعار تنافسية" 
+                           data-en="Providing all medical supplies and equipment with high quality and competitive prices">
+                            توفير جميع المستلزمات الطبية والأدوات بجودة عالية وأسعار تنافسية
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <i class="fas fa-mortar-pestle service-icon"></i>
+                        <h3 data-ar="التركيبات الصيدلانية" data-en="Pharmaceutical Compounding">التركيبات الصيدلانية</h3>
+                        <p data-ar="تحضير أدوية مخصصة حسب وصفة الطبيب بجودة عالية ودقة فائقة" 
+                           data-en="Preparing customized medicines according to doctor's prescription with high quality and extreme precision">
+                            تحضير أدوية مخصصة حسب وصفة الطبيب بجودة عالية ودقة فائقة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="جولة في الصيدلية" data-en="Pharmacy Tour">جولة في الصيدلية</h2>
+                <p class="section-description" data-ar="تعرف على صيدلية سمر الباز من خلال جولة افتراضية شاملة" 
+                   data-en="Get to know Samar Elbaz Pharmacy through a comprehensive virtual tour">
+                    تعرف على صيدلية سمر الباز من خلال جولة افتراضية شاملة
+                </p>
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8">
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                title="Pharmacy Tour" 
+                                allowfullscreen 
+                                class="w-100 h-100">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact & Map Section -->
+    <section id="contact" class="section-padding" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+                <p class="section-description" data-ar="نحن هنا لخدمتكم على مدار الساعة. لا تتردد في التواصل معنا لأي استفسار" 
+                   data-en="We are here to serve you 24/7. Do not hesitate to contact us for any inquiry">
+                    نحن هنا لخدمتكم على مدار الساعة. لا تتردد في التواصل معنا لأي استفسار
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.123456789!2d31.2357!3d30.0444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzM5LjgiTiAzMcKwMTQnMDguNSJF!5e0!3m2!1sen!2seg!4v1234567890" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="w-100 h-100">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h4 data-ar="العنوان" data-en="Address">العنوان</h4>
+                                <p data-ar="شارع الرئيسي، المنطقة المركزية" data-en="Main Street, Central Area">شارع الرئيسي، المنطقة المركزية</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4>
+                                <p>01501021670</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp contact-icon"></i>
+                            <div>
+                                <h4 data-ar="واتساب" data-en="WhatsApp">واتساب</h4>
+                                <p>01501021670</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <div>
+                                <h4 data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</h4>
+                                <p data-ar="24 ساعة / 7 أيام" data-en="24 hours / 7 days">24 ساعة / 7 أيام</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="فريق العمل" data-en="Our Team">فريق العمل</h2>
+                <p class="section-description" data-ar="يتكون فريقنا من صيادلة متخصصين ومؤهلين لتقديم أفضل خدمة لعملائنا الكرام" 
+                   data-en="Our team consists of specialized and qualified pharmacists to provide the best service to our valued customers">
+                    يتكون فريقنا من صيادلة متخصصين ومؤهلين لتقديم أفضل خدمة لعملائنا الكرام
+                </p>
+            </div>
+            <div class="team-slider swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="team-card">
+                            <div class="team-img">
+                                <img src="https://picsum.photos/seed/pharmacist1/150/150.jpg" alt="Team Member">
+                            </div>
+                            <h4 data-ar="د. أحمد محمد" data-en="Dr. Ahmed Mohamed">د. أحمد محمد</h4>
+                            <p data-ar="صيدلي رئيسي" data-en="Head Pharmacist">صيدلي رئيسي</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="team-card">
+                            <div class="team-img">
+                                <img src="https://picsum.photos/seed/pharmacist2/150/150.jpg" alt="Team Member">
+                            </div>
+                            <h4 data-ar="د. سارة أحمد" data-en="Dr. Sara Ahmed">د. سارة أحمد</h4>
+                            <p data-ar="صيدلية استشارية" data-en="Consultant Pharmacist">صيدلية استشارية</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="team-card">
+                            <div class="team-img">
+                                <img src="https://picsum.photos/seed/pharmacist3/150/150.jpg" alt="Team Member">
+                            </div>
+                            <h4 data-ar="د. محمود علي" data-en="Dr. Mahmoud Ali">د. محمود علي</h4>
+                            <p data-ar="صيدلاني" data-en="Pharmacist">صيدلاني</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="team-card">
+                            <div class="team-img">
+                                <img src="https://picsum.photos/seed/pharmacist4/150/150.jpg" alt="Team Member">
+                            </div>
+                            <h4 data-ar="د. نورة خالد" data-en="Dr. Nora Khaled">د. نورة خالد</h4>
+                            <p data-ar="صيدلانية" data-en="Pharmacist">صيدلانية</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Delivery Areas Section -->
+    <section class="section-padding" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="مناطق التوصيل" data-en="Delivery Areas">مناطق التوصيل</h2>
+                <p class="section-description" data-ar="نوصل لجميع المناطق التالية بسرعة ودقة. نغطي معظم الأحياء المجاورة" 
+                   data-en="We deliver to all the following areas quickly and accurately. We cover most nearby neighborhoods">
+                    نوصل لجميع المناطق التالية بسرعة ودقة. نغطي معظم الأحياء المجاورة
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="location-card">
+                        <i class="fas fa-map-pin fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h4 data-ar="كفر سنجاب" data-en="Kafr Singab">كفر سنجاب</h4>
+                        <p data-ar="توصيل خلال 30 دقيقة" data-en="Delivery within 30 minutes">توصيل خلال 30 دقيقة</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="location-card">
+                        <i class="fas fa-map-pin fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h4 data-ar="صدقا" data-en="Sidga">صدقا</h4>
+                        <p data-ar="توصيل خلال 45 دقيقة" data-en="Delivery within 45 minutes">توصيل خلال 45 دقيقة</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="location-card">
+                        <i class="fas fa-map-pin fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h4 data-ar="الخمسة" data-en="El Khamsa">الخمسة</h4>
+                        <p data-ar="توصيل خلال 60 دقيقة" data-en="Delivery within 60 minutes">توصيل خلال 60 دقيقة</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="location-card">
+                        <i class="fas fa-map-pin fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h4 data-ar="الشرفا" data-en="El Sharfa">الشرفا</h4>
+                        <p data-ar="توصيل خلال 45 دقيقة" data-en="Delivery within 45 minutes">توصيل خلال 45 دقيقة</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="location-card">
+                        <i class="fas fa-map-pin fa-3x mb-3" style="color: var(--primary-color);"></i>
+                        <h4 data-ar="البسيوني" data-en="El Basyouni">البسيوني</h4>
+                        <p data-ar="توصيل خلال 30 دقيقة" data-en="Delivery within 30 minutes">توصيل خلال 30 دقيقة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Methods Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="طرق الدفع" data-en="Payment Methods">طرق الدفع</h2>
+                <p class="section-description" data-ar="نقبل مختلف طرق الدفع لراحتكم. نوفر خيارات دفع متعددة وآمنة" 
+                   data-en="We accept various payment methods for your convenience. We provide multiple and secure payment options">
+                    نقبل مختلف طرق الدفع لراحتكم. نوفر خيارات دفع متعددة وآمنة
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="payment-card">
+                        <i class="fas fa-money-bill-wave payment-icon"></i>
+                        <h4 data-ar="الدفع النقدي" data-en="Cash Payment">الدفع النقدي</h4>
+                        <p data-ar="يمكنك الدفع عند الاستلام أو عند الصيدلية. خيار آمن ومريح" 
+                           data-en="You can pay upon delivery or at the pharmacy. A safe and convenient option">
+                            يمكنك الدفع عند الاستلام أو عند الصيدلية. خيار آمن ومريح
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="payment-card">
+                        <i class="fas fa-credit-card payment-icon"></i>
+                        <h4 data-ar="الدفع بالبطاقة" data-en="Card Payment">الدفع بالبطاقة</h4>
+                        <p data-ar="نقبل جميع أنواع البطاقات الائتمانية والخصم المباشر. دفع آمن ومشفر" 
+                           data-en="We accept all types of credit and debit cards. Secure and encrypted payment">
+                            نقبل جميع أنواع البطاقات الائتمانية والخصم المباشر. دفع آمن ومشفر
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section-padding" style="background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="آراء العملاء" data-en="Customer Reviews">آراء العملاء</h2>
+                <p class="section-description" data-ar="ماذا يقول عملاؤنا عنا. آراء حقيقية من عملائنا الكرام" 
+                   data-en="What our customers say about us. Real reviews from our valued customers">
+                    ماذا يقول عملاؤنا عنا. آراء حقيقية من عملائنا الكرام
+                </p>
+            </div>
+            <div class="testimonial-slider swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div>
+                                    <h5 data-ar="محمد أحمد" data-en="Mohamed Ahmed">محمد أحمد</h5>
+                                    <div class="text-warning mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <img src="https://picsum.photos/seed/customer1/80/80.jpg" alt="Customer" class="testimonial-img">
+                            </div>
+                            <p class="testimonial-text" data-ar="خدمة ممتازة وأدوية أصلية بأسعار مناسبة. الصيادلة متعاونون جداً ويقدمون استشارات مفيدة. أنصح بالتعامل معهم بشدة" 
+                               data-en="Excellent service and original medicines at reasonable prices. The pharmacists are very cooperative and provide helpful consultations. I highly recommend dealing with them">
+                                خدمة ممتازة وأدوية أصلية بأسعار مناسبة. الصيادلة متعاونون جداً ويقدمون استشارات مفيدة. أنصح بالتعامل معهم بشدة
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div>
+                                    <h5 data-ar="فاطمة محمود" data-en="Fatima Mahmoud">فاطمة محمود</h5>
+                                    <div class="text-warning mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <img src="https://picsum.photos/seed/customer2/80/80.jpg" alt="Customer" class="testimonial-img">
+                            </div>
+                            <p class="testimonial-text" data-ar="توصيل سريع وموثوق. الصيادلة متعاونون جداً ويقدمون استشارات مفيدة. جودة الأدوية ممتازة والأسعار مناسبة" 
+                               data-en="Fast and reliable delivery. The pharmacists are very cooperative and provide helpful consultations. The quality of medicines is excellent and the prices are reasonable">
+                                توصيل سريع وموثوق. الصيادلة متعاونون جداً ويقدمون استشارات مفيدة. جودة الأدوية ممتازة والأسعار مناسبة
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div>
+                                    <h5 data-ar="خالد عبدالله" data-en="Khaled Abdullah">خالد عبدالله</h5>
+                                    <div class="text-warning mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <img src="https://picsum.photos/seed/customer3/80/80.jpg" alt="Customer" class="testimonial-img">
+                            </div>
+                            <p class="testimonial-text" data-ar="أفضل صيدلية في المنطقة. أسعار تنافسية وجودة عالية. خدمة العملاء ممتازة وتوصيل سريع. أوصي بها بشدة" 
+                               data-en="The best pharmacy in the area. Competitive prices and high quality. Excellent customer service and fast delivery. I highly recommend it">
+                                أفضل صيدلية في المنطقة. أسعار تنافسية وجودة عالية. خدمة العملاء ممتازة وتوصيل سريع. أوصي بها بشدة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title" data-ar="الأسئلة الشائعة" data-en="Frequently Asked Questions">الأسئلة الشائعة</h2>
+                <p class="section-description" data-ar="إجابات على الأسئلة الأكثر شيوعاً. إذا كان لديك أي سؤال آخر، لا تتردد في التواصل معنا" 
+                   data-en="Answers to the most common questions. If you have any other question, do not hesitate to contact us">
+                    إجابات على الأسئلة الأكثر شيوعاً. إذا كان لديك أي سؤال آخر، لا تتردد في التواصل معنا
+                </p>
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <span data-ar="هل تقدمون خدمة التوصيل؟" data-en="Do you offer delivery service?">هل تقدمون خدمة التوصيل؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعم، نقدم خدمة التوصيل لجميع المناطق المجاورة خلال 30-60 دقيقة. خدمة التوصيل متاحة على مدار الساعة" 
+                                          data-en="Yes, we offer delivery service to all nearby areas within 30-60 minutes. Delivery service is available 24/7">
+                                        نعم، نقدم خدمة التوصيل لجميع المناطق المجاورة خلال 30-60 دقيقة. خدمة التوصيل متاحة على مدار الساعة
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <span data-ar="ما هي ساعات عمل الصيدلية؟" data-en="What are the pharmacy working hours?">ما هي ساعات عمل الصيدلية؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعمل 24 ساعة يومياً طوال أيام الأسبوع بما في ذلك العطلات الرسمية. نحن هنا لخدمتكم في أي وقت" 
+                                          data-en="We work 24 hours a day throughout the week including official holidays. We are here to serve you anytime">
+                                        نعمل 24 ساعة يومياً طوال أيام الأسبوع بما في ذلك العطلات الرسمية. نحن هنا لخدمتكم في أي وقت
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <span data-ar="هل تقبلون بطاقات الدفع؟" data-en="Do you accept payment cards?">هل تقبلون بطاقات الدفع؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعم، نقبل جميع أنواع البطاقات الائتمانية والخصم المباشر بالإضافة إلى الدفع النقدي. جميع المعاملات آمنة ومشفرة" 
+                                          data-en="Yes, we accept all types of credit and debit cards in addition to cash payment. All transactions are secure and encrypted">
+                                        نعم، نقبل جميع أنواع البطاقات الائتمانية والخصم المباشر بالإضافة إلى الدفع النقدي. جميع المعاملات آمنة ومشفرة
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <span data-ar="هل تقدمون استشارات دوائية مجانية؟" data-en="Do you offer free pharmaceutical consultations?">هل تقدمون استشارات دوائية مجانية؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعم، نقدم استشارات دوائية مجانية مع صيادلة متخصصين. يمكنكم الاستفسار عن أي دواء أو حالة صحية" 
+                                          data-en="Yes, we offer free pharmaceutical consultations with specialized pharmacists. You can inquire about any medicine or health condition">
+                                        نعم، نقدم استشارات دوائية مجانية مع صيادلة متخصصين. يمكنكم الاستفسار عن أي دواء أو حالة صحية
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <span data-ar="هل يمكنني حجز الأدوية مسبقاً؟" data-en="Can I reserve medicines in advance?">هل يمكنني حجز الأدوية مسبقاً؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعم، يمكنك حجز الأدوية مسبقاً عبر الهاتف أو الواتساب. سنقوم بإعداد طلبك واستعداده عند وصولك" 
+                                          data-en="Yes, you can reserve medicines in advance via phone or WhatsApp. We will prepare your order and have it ready when you arrive">
+                                        نعم، يمكنك حجز الأدوية مسبقاً عبر الهاتف أو الواتساب. سنقوم بإعداد طلبك واستعداده عند وصولك
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    <span data-ar="هل تقدمون خصومات للمستمرين؟" data-en="Do you offer discounts for regular customers?">هل تقدمون خصومات للمستمرين؟</span>
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <span data-ar="نعم، لدينا برنامج ولاء يقدم خصومات خاصة للعملاء المستمرين. كما نقدم عروضاً دورية على مختلف المنتجات" 
+                                          data-en="Yes, we have a loyalty program that offers special discounts for regular customers. We also offer periodic discounts on various products">
+                                        نعم، لدينا برنامج ولاء يقدم خصومات خاصة للعملاء المستمرين. كما نقدم عروضاً دورية على مختلف المنتجات
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h4 data-ar="صيدلية سمر الباز" data-en="Samar Elbaz Pharmacy">صيدلية سمر الباز</h4>
+                        <p data-ar="رعايتكم صحتنا - نقدم أفضل الخدمات الطبية والصيدلانية بجودة عالية وأسعار تنافسية" 
+                           data-en="Your care is our health - We provide the best medical and pharmaceutical services with high quality and competitive prices">
+                            رعايتكم صحتنا - نقدم أفضل الخدمات الطبية والصيدلانية بجودة عالية وأسعار تنافسية
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                            <li><a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                            <li><a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+                            <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4 data-ar="خدماتنا" data-en="Our Services">خدماتنا</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" data-ar="صرف الأدوية" data-en="Dispensing Medicines">صرف الأدوية</a></li>
+                            <li><a href="#" data-ar="استشارات دوائية" data-en="Pharmaceutical Consultations">استشارات دوائية</a></li>
+                            <li><a href="#" data-ar="توصيل للمنزل" data-en="Home Delivery">توصيل للمنزل</a></li>
+                            <li><a href="#" data-ar="التركيبات الصيدلانية" data-en="Pharmaceutical Compounding">التركيبات الصيدلانية</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4 data-ar="معلومات التواصل" data-en="Contact Info">معلومات التواصل</h4>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <p data-ar="شارع الرئيسي، المنطقة المركزية" 
+                                   data-en="Main Street, Central Area">
+                                    شارع الرئيسي، المنطقة المركزية
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <p>01501021670</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <p data-ar="info@samarelbaz.com" data-en="info@samarelbaz.com">info@samarelbaz.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span data-ar="صيدلية سمر الباز" data-en="Samar Elbaz Pharmacy">صيدلية سمر الباز</span>. <span data-ar="جميع الحقوق محفوظة" data-en="All rights reserved">جميع الحقوق محفوظة</span>.</p>
+                <p data-ar="صنع بواسطة أحمد توحيد" data-en="Made by Ahmed Tawhid">صنع بواسطة أحمد توحيد</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(28, 27, 23, 0.98)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.4)';
+            } else {
+                navbar.style.background = 'rgba(28, 27, 23, 0.95)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            }
+        });
+        
+        // Language Switcher
+        function switchLanguage(lang) {
+            document.body.className = lang === 'en' ? 'en' : '';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
+            
+            // Update active button
+            document.querySelectorAll('.lang-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all text content
+            document.querySelectorAll('[data-ar]').forEach(element => {
+                const text = lang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                if (element.tagName === 'INPUT' || element.tagName === 'BUTTON') {
+                    element.value = text;
+                } else {
+                    element.textContent = text;
+                }
+            });
+            
+            // Show notification
+            showToast(lang === 'ar' ? 'تم تغيير اللغة بنجاح' : 'Language changed successfully');
+        }
+        
+        // Toast Notification
+        function showToast(message) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Initialize Swiper
+        const teamSwiper = new Swiper('.team-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prev: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+        
+        const testimonialSwiper = new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prev: '.swiper-button-prev',
+            },
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effect to cards
+        document.querySelectorAll('.service-card, .location-card, .payment-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
