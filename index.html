@@ -241,6 +241,7 @@
         .hero-content {
             max-width: 800px;
             padding: 0 20px;
+            margin: 0 auto;
         }
         
         .hero-content h1 {
@@ -333,6 +334,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            margin: 0 auto;
         }
         
         .service-card::before {
@@ -385,6 +387,7 @@
             padding: 40px 30px;
             transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
         }
         
         .team-card:hover {
@@ -423,6 +426,7 @@
             border: 1px solid rgba(251, 1, 10, 0.3);
             position: relative;
             overflow: hidden;
+            margin: 0 auto;
         }
         
         .location-card::after {
@@ -454,6 +458,7 @@
             text-align: center;
             transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
         }
         
         .payment-card:hover {
@@ -478,9 +483,10 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
             border-radius: 25px;
             padding: 40px;
-            margin: 20px;
+            margin: 20px auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
+            max-width: 100%;
         }
         
         .testimonial-card:hover {
@@ -661,6 +667,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto;
         }
         
         .prescription-content::before {
@@ -734,6 +741,7 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             height: 400px;
             max-width: 100%;
+            margin: 0 auto;
         }
         
         .contact-info {
@@ -742,6 +750,7 @@
             padding: 40px;
             height: 100%;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
         }
         
         .contact-item {
@@ -798,35 +807,190 @@
         }
         
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
+            /* إصلاح عام للشاشات الصغيرة */
+            html, body {
+                overflow-x: hidden !important;
+                position: relative;
+                width: 100%;
             }
             
-            .hero-content p {
-                font-size: 1.2rem;
+            /* تعديل الحاويات */
+            .container, .container-fluid {
+                padding-right: 15px !important;
+                padding-left: 15px !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+                margin: 0 auto;
+            }
+            
+            /* تعديل الصفوف */
+            .row {
+                margin-right: -15px !important;
+                margin-left: -15px !important;
+                justify-content: center;
+            }
+            
+            /* تعديل الأعمدة */
+            .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
+                padding-right: 15px !important;
+                padding-left: 15px !important;
+                max-width: 100% !important;
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            
+            /* تعديل العناوين */
+            .hero-content h1 {
+                font-size: 2.2rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                text-align: center;
+                margin: 0 auto;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 word-wrap: break-word;
                 overflow-wrap: break-word;
+                text-align: center;
+                display: block;
+                margin: 0 auto 30px;
             }
             
+            .section-title::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            body.en .section-title::after {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+            
+            /* تعديل الأقسام */
             .section-padding {
                 padding: 60px 0;
             }
             
+            /* تعديل البطاقات */
+            .service-card, .location-card, .payment-card, .team-card, .testimonial-card {
+                margin: 0 auto 30px;
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            /* تعديل الأزرار */
+            .btn-primary-custom {
+                padding: 15px 25px;
+                font-size: 0.9rem;
+                white-space: normal;
+                word-wrap: break-word;
+                text-align: center;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            /* تعديل الروابط في الفوتر */
+            .footer-links a {
+                white-space: normal;
+                word-wrap: break-word;
+                text-align: center;
+                display: block;
+            }
+            
+            /* تعديل معلومات الاتصال */
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                margin: 0 auto 20px;
+            }
+            
+            .contact-icon {
+                margin: 0 0 15px 0;
+            }
+            
+            /* تعديل الصور */
+            img {
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            /* تعديل الفيديو */
+            .ratio {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .ratio iframe {
+                min-width: 0;
+                max-width: 100%;
+            }
+            
+            /* منع التمدد الأفقي في الخرائط */
+            .map-container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .map-container iframe {
+                min-width: 0;
+                max-width: 100%;
+            }
+            
+            /* تعديل الـ Swiper */
+            .swiper {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .swiper-slide {
+                max-width: 100%;
+            }
+            
+            /* تعديل الأقسام الأخرى */
             .prescription-content {
-                padding: 30px;
+                padding: 30px 20px;
+                margin: 0 auto;
             }
             
-            .lang-switcher {
-                top: 10px;
-                right: 10px;
+            .prescription-tips {
+                padding: 20px;
+                margin: 20px 0;
             }
             
+            /* تعديل الـ Accordion */
+            .accordion {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            /* تعديل الفوتر */
+            .footer-widget {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .footer-widget h4 {
+                text-align: center;
+            }
+            
+            .contact-info-item {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .social-links {
+                text-align: center;
+            }
+            
+            .social-links a {
+                display: inline-block;
+            }
+            
+            /* تعديل الـ WhatsApp Float */
             .whatsapp-float {
                 width: 50px;
                 height: 50px;
@@ -840,99 +1004,47 @@
                 left: 20px;
             }
             
-            /* إضافة قواعد لمنع التمرير الأفقي على الموبايل */
-            * {
+            /* تعديل الـ Language Switcher */
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            /* تعديل الـ Toast */
+            .toast-container {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+            
+            .custom-toast {
                 max-width: 100%;
-            }
-            
-            /* تعديل العناصر التي قد تسبب التمدد الأفقي */
-            .hero-content h1 {
-                font-size: 2.2rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-            
-            /* تعديل الحاويات لتناسب الشاشات الصغيرة */
-            .container, .container-fluid {
-                padding-right: 15px;
-                padding-left: 15px;
-                overflow-x: hidden;
-            }
-            
-            /* تعديل البطاقات لمنع تجاوز العرض */
-            .service-card, .location-card, .payment-card, .team-card, .testimonial-card {
-                margin-right: auto;
-                margin-left: auto;
-            }
-            
-            /* تعديل الأزرار */
-            .btn-primary-custom {
-                padding: 15px 25px;
-                font-size: 0.9rem;
                 white-space: normal;
                 word-wrap: break-word;
-            }
-            
-            /* تعديل الروابط في الفوتر */
-            .footer-links a {
-                white-space: normal;
-                word-wrap: break-word;
-            }
-            
-            /* تعديل معلومات الاتصال */
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contact-icon {
-                margin: 0 0 15px 0;
-            }
-            
-            /* تعديل الصور */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-            
-            /* تعديل الفيديو */
-            .ratio iframe {
-                min-width: 0;
-            }
-            
-            /* منع التمدد الأفقي في الخرائط */
-            .map-container iframe {
-                min-width: 0;
             }
         }
         
         @media (max-width: 576px) {
+            /* تعديلات إضافية للشاشات الصغيرة جداً */
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
             }
             
             .btn-primary-custom {
-                padding: 15px 35px;
-                font-size: 1rem;
+                padding: 12px 20px;
+                font-size: 0.85rem;
             }
             
             .testimonial-card {
-                padding: 25px;
+                padding: 20px;
+                margin: 15px auto;
             }
             
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contact-icon {
-                margin: 0 0 15px 0;
+            .service-card, .location-card, .payment-card, .team-card {
+                padding: 25px 20px;
             }
             
             .whatsapp-float {
@@ -956,6 +1068,8 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
+            max-width: 90%;
+            margin: 0 auto;
         }
         
         .custom-toast {
@@ -967,6 +1081,9 @@
             box-shadow: 0 15px 35px rgba(251, 1, 10, 0.4);
             font-weight: 500;
             animation: slideDown 0.5s ease;
+            max-width: 100%;
+            white-space: normal;
+            word-wrap: break-word;
         }
         
         @keyframes slideDown {
@@ -1186,8 +1303,8 @@
             </div>
             <div class="row justify-content-center" data-aos="fade-up">
                 <div class="col-lg-8">
-                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg" style="max-width: 100%;">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/O04FZETL44k?si=1oCG288Fp4mJaMyE" 
                                 title="Pharmacy Tour" 
                                 allowfullscreen 
                                 class="w-100 h-100"
